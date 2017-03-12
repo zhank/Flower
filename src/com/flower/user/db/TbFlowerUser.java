@@ -1,5 +1,6 @@
-package com.flower.db.field;
+package com.flower.user.db;
 
+import com.flower.db.field.Field;
 import com.flower.db.field.type.DateTimeType;
 import com.flower.db.field.type.IntType;
 import com.flower.db.field.type.StringType;
