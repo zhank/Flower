@@ -3,13 +3,14 @@ package com.flower.db.field;
 import com.flower.db.field.type.DateTimeType;
 import com.flower.db.field.type.IntType;
 import com.flower.db.field.type.StringType;
+import com.flower.dictionary.GenderType;
 
 /**
  * 人员信息表
  */
-public class TbDemoUser {
+public class TbFlowerUser {
 
-	public static final String TABLE = "TB_DEMO_USER";
+	public static final String TABLE = "TB_FLOWER_USER";
 
 	public static final Field ID = new Field("编号", "USER_ID", new IntType(),
 			true, true);

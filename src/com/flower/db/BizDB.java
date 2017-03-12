@@ -51,8 +51,8 @@ public class BizDB implements IBizDB {
 		 try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";// 127.0.0.1是本机地址，XE是精简版Oracle的默认数据库名
-	        user = "demo";// 用户名,系统默认的账户名
-	        password = "demo";// 你安装时选设置的密码
+	        user = "flower";// 用户名,系统默认的账户名
+	        password = "flower";// 你安装时选设置的密码
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}// 加载Oracle驱动程序
