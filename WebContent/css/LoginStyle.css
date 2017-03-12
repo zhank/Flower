@@ -41,6 +41,7 @@ a:HOVER{text-decoration: underline;}
     font-family: 'Microsoft YaHei';
     margin-left: -15px;
 }
+.loginLink a{text-align: none;}
 .rigistLi a{font-size:14px;margin: 13%;}
 		
 .footer{position:fixed;width:337px;bottom:5px;left:38%;color:#fff;font-size:13px;}
