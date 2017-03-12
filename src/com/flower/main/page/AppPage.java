@@ -1,5 +1,6 @@
 package com.flower.main.page;
 
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.panel.Panel;
 
@@ -16,7 +17,7 @@ public class AppPage extends WebPage {
 	 * page“≥√Ê¥¥Ω®
 	 */
 	public AppPage() {
-		this.add(new Login(getBodyName()));
+		this.add(new Login(getBodyName()).add(new AttributeModifier("style", "height:100%;")));
 	}
 	
 	public void initBody(Panel bodyPanel) {

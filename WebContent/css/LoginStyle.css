@@ -1,3 +1,46 @@
-body{
-	background:url(../img/loginbg.png) no-repeat;
+li{list-style: none;}
+a{cursor:pointer;}
+a:HOVER{text-decoration: underline;}
+.loginForm li{height:60px;line-height:60px; margin-left: -20px;color:#fff;}
+.loginPanel{
+	position:absolute; 
+	background:url(../img/loginbg.jpg) no-repeat;
+	width:100%;
+	height:100%;
+	background-attachment:fixed; 
+	background-size: cover; 
+	-webkit-background-size: cover;
+	background-position: center 0; 
 }
+.loginMod{position:absolute;width: 314px;;border: 1px solid #e6e6e6;margin-top:5%;left:920px}
+.welTitle{display:block;height:5%;color: #fff;text-align: center;line-height: 50px;
+		border-bottom: 1px solid #fff;}
+.inputAttr1{
+	font-size:14px;
+    width: 64%;
+    height: 50%;
+    border-radius:5px;
+    border: 1px solid #999999;
+    box-shadow: 1px 1px 3px #cccccc;
+    padding-left: 2%;
+    margin-right: 2%;
+}
+.loginLi{
+	margin-top: 6%;
+	text-align: center;
+	cursor:pointer;
+}
+.loginLink{
+	border: 1px solid #e85356;
+    display: inline-block;
+    width: 85%;
+    background: #e4393c;
+    color: #fff;
+    font-size: 20px;
+    line-height:35px;
+    font-family: 'Microsoft YaHei';
+    margin-left: -15px;
+}
+.rigistLi a{font-size:14px;margin: 13%;}
+		
+.footer{position:fixed;width:337px;bottom:5px;left:38%;color:#fff;font-size:13px;}

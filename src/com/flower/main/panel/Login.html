@@ -1,22 +1,38 @@
 <?xml version="1.0" encoding="GB2312"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:wicket="http://wicket.apache.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
 <head>
-<title>Elim鲜花之城</title>
-<link rel="stylesheet" type="text/css" href="css/LoginStyle.css" />
+<link rel="stylesheet" type="text/css" href="css/LoginStyle.css"></link>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 </head>
 <wicket:panel>
+	<div class="loginPanel">
 	<div class="loginMod" wicket:id="loginWc">
 		<div>
-			<span wicket:id="welTitle"></span>
+			<span class="welTitle" wicket:id="welTitle"></span>
 		</div>
-		<div class="loginTitle"><span>会员登陆</span></div>
+		<div class="welTitle"><span>会员登陆</span></div>
 		<div class="loginMain">
-			
+			<form class="loginForm">
+			<ul>
+				<li><span style="display:inline-block;width: 19%;">用户名:</span> 
+				<input type="text" class="inputAttr1" name="activityUserValue" for="reservation" placeholder="注册邮箱/用户名"/>
+				</li>
+				<li>
+				<span style="display:inline-block;width: 21%;">密&nbsp;&nbsp;&nbsp;&nbsp;码:</span><input type="text" class="inputAttr1" name="activityUserValue" 
+					for="reservation" placeholder="密码"/>
+				</li>
+				<li class="loginLi">
+					<span class="loginLink"><a>登陆</a></span>
+				</li>
+				<li class="rigistLi">
+					<a>用户注册</a><a>忘记密码</a>
+				</li>
+			</ul>
+			</form>
 		</div>
 	</div>
-	<div id="footer" wicket:id="htmlFooter">荣誉出品</div>
+	<div class="footer" wicket:id="htmlFooter">荣誉出品</div>
+	</div>
 </wicket:panel>
 </html>

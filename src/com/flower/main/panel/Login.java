@@ -18,8 +18,9 @@ public class Login extends Panel {
 	public Login(String id) {
 		super(id);
 		this.setOutputMarkupId(true);
-		//this.add(new Label("htmlTitle", AppContextMgr.getHtmlTitle()));
 		this.add(creatLoginPanel());
+		
+		
 		this.add(new Label("htmlFooter", AppContextMgr.getHtmlFooter()));
 	}
 
