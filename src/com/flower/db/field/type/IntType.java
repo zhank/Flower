@@ -11,4 +11,5 @@ public class IntType extends ValidateType {
 	public int getSqlType() {
 		return java.sql.Types.INTEGER;
 	}
+
 }

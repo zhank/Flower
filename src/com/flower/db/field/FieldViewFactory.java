@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
+import org.apache.wicket.behavior.Behavior;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.util.value.ValueMap;
@@ -31,7 +32,17 @@ public class FieldViewFactory extends Field {
 	
 	public IFieldDisplayConverter fdc = null;
 	
+	/**
+	 * 存放CSS样式，和htmlAttributeMap区分开的主要意图是，如果存放ID或别的操作，在td中就不会有混淆的属性值
+	 */
+	protected Map<String, String> cssStyleMap = new HashMap<String, String>(2);
+	/**
+	 * HEAD头中存放对应的属性值
+	 */
 	protected Map<String, String> htmlAttributeMap = new HashMap<String, String>();
+	public Behavior behavior = new Behavior() {
+
+		private static final long serialVersionUID = 1L;};
 	
 	public FieldViewFactory setVisible(boolean b) {
 		visible = b;
@@ -62,6 +73,12 @@ public class FieldViewFactory extends Field {
 	
 	public FieldViewFactory addConverter(IFieldDisplayConverter fdc) {
 		this.fdc = fdc;
+		return this;
+	}
+	
+	//给输入框添加JS事件
+	public FieldViewFactory addAjaxEvent(Behavior behavior) {
+		this.behavior = behavior;
 		return this;
 	}
 
@@ -130,35 +147,43 @@ public class FieldViewFactory extends Field {
 	 * @return
 	 */
 	public Component createInputComp(String id, ValueMap valueMap,
-			Map<String, Object> compParamMap, boolean notNull) {
+			Map<String, Object> compParamMap, boolean notNull, FocusComp focusComp) {
+		Component component;
 		if (isReadonly()) {
 			// 只读就只显示label
-			return new Label(id, getFieldStringValue(valueMap.get(this.name)));
+			return new Label(id, getFieldStringValue(valueMap.get(this.name))).add(behavior);
 		}
 		ValidateType type = this.getType();
-
 		if (type.getSqlType() == java.sql.Types.DATE) {
 			DateInput dateInput = new DateInput(id, valueMap, this, notNull);
+			if (focusComp != null)
+				focusComp.focusComp = dateInput.getFieldComponent();
 			addComponentAttributeValue(dateInput.getFieldComponent());
-			return dateInput;
+			component = dateInput;
 		} else if (type.getSqlType() == java.sql.Types.BOOLEAN) {
 			CheckInput checkInput = new CheckInput(id, valueMap, this, notNull);
+			if (focusComp != null)
+				focusComp.focusComp = checkInput.getFieldComponent();
 			addComponentAttributeValue(checkInput.getFieldComponent());
-			return checkInput;
+			component = checkInput;
 		} else {
 			if (!this.isVisible()) {
 				HiddenInput hiddenInput = new HiddenInput(id, valueMap, this);
+				if (focusComp != null)
+					focusComp.focusComp = hiddenInput.getFieldComponent();
 				addComponentAttributeValue(hiddenInput.getFieldComponent());
-				return hiddenInput;
+				component = hiddenInput;
 			} else {
 				// 基本input组件
 				TextInput textInput = new TextInput(id, valueMap, this,
 						notNull);
+				if (focusComp != null)
+					focusComp.focusComp = textInput.getFieldComponent();
 				addComponentAttributeValue(textInput.getFieldComponent());
-				return textInput;
+				component = textInput;
 			}
-
 		}
+		return component.add(behavior);
 	}
 	
 	/**
@@ -199,6 +224,20 @@ public class FieldViewFactory extends Field {
 		if (this.htmlAttributeMap.size() > 0) {
 			for (String key : htmlAttributeMap.keySet()) {
 				String value = this.htmlAttributeMap.get(key);
+				comp.add(new AttributeModifier(key, new Model<String>(value)));
+			}
+		}
+	}
+	
+	/**
+	 * 把已添加的css样式添加进td中
+	 * 
+	 * @param comp
+	 */
+	public void addComponentCssStyle(Component comp) {
+		if (this.cssStyleMap.size() > 0) {
+			for (String key : cssStyleMap.keySet()) {
+				String value = this.cssStyleMap.get(key);
 				comp.add(new AttributeModifier(key, new Model<String>(value)));
 			}
 		}

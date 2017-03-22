@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.list.Loop;
@@ -14,6 +15,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.util.value.ValueMap;
 
 import com.flower.db.field.FieldViewFactory;
+import com.flower.db.field.FocusComp;
 import com.flower.util.FieldDeclare;
 
 abstract public class FieldsInput extends Panel{
@@ -54,8 +56,8 @@ abstract public class FieldsInput extends Panel{
 				FieldViewFactory fvf = m_inputFields.getFvfArray()[index];
 				Component label = getInputLabel("label", fvf);
 				item.add(label);
-				
-				Component input = fvf.createInputComp("input", m_valueMap, m_extMap, m_notNull);
+				FocusComp focusComp = new FocusComp();
+				Component input = fvf.createInputComp("input", m_valueMap, m_extMap, m_notNull, focusComp);
 				item.add(input);
 				input.setVisible(fvf.isVisible());
 			}
@@ -70,6 +72,13 @@ abstract public class FieldsInput extends Panel{
 			}
 		};
 		form .add(loop);
+		WebMarkupContainer hideWc = new WebMarkupContainer("hideDiv");
+		form.add(hideWc);
+		Component hideComponent= getHideWcComponent();
+		if(hideComponent != null) {
+			hideWc.add(hideComponent);
+		}
+		
 		AjaxButton submitBtn = new AjaxButton("submit", new Model<String>(getSubmitBtnName()), form) {
 			private static final long serialVersionUID = 1L;
 
@@ -85,6 +94,11 @@ abstract public class FieldsInput extends Panel{
 	
 	public String getSubmitBtnName() {
 		return "È·¶¨";
+	}
+	
+	//Òþ²Ø°´Å¥
+	public Component getHideWcComponent(){
+		return null;
 	}
 	
 }
