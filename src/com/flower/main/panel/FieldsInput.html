@@ -1,0 +1,68 @@
+<html xmlns:wicket>
+<wicket:head>
+	<style>
+		.bodyCss{margin: 0 auto;}
+		li{list-style: none;}
+		.loopli{
+		    width: 350px;
+		    height: 40px;
+		    line-height:40px;
+		    background: inherit;
+		    background-color: rgba(255, 255, 255, 1);
+		    box-sizing: border-box;
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgba(153, 153, 153, 1);
+		    border-radius: 0px;
+		    margin: 10px;
+		}
+		.labelCss{
+			width:90px;
+			height:35px;
+			float:right;
+			text-align: center;
+			
+		}
+		.inputCss input{
+			    width: 250px;
+			    height: 38px;
+			    font-family: 'Microsoft YaHei UI';
+			    font-weight: 400;
+			    font-style: normal;
+			    font-size: 16px;
+			    text-decoration: none;
+			    color: #000000;
+			    text-align: left;
+			    border-color: transparent;
+			    outline-style: none;
+			    float:right;
+		}
+		.submitCss input{
+			    width: 350px;
+			    height: 40px;
+			    background: inherit;
+			    background-color: rgba(238, 34, 34, 1);
+			    box-sizing: border-box;
+			    border-width: 1px;
+			    border-style: solid;
+			    border-color: rgba(121, 121, 121, 1);
+			    border-radius: 0px;
+		}
+	</style>
+</wicket:head>
+<wicket:panel>
+	<div class="bodyCss">
+		<form wicket:id="form">
+			<ul>
+				<li class="loopli" wicket:id="loop">
+				<span class="inputCss" wicket:id="input"></span>
+				<span class="labelCss" wicket:id="label"></span>
+				</li>
+			</ul>
+			<div class="submitCss">
+				<input wicket:id="submit" type="submit" class="buttonSubmit" />
+			</div>
+		</form>
+	</div>
+</wicket:panel>
+</html>

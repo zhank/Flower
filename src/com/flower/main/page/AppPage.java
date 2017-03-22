@@ -17,14 +17,14 @@ public class AppPage extends WebPage {
 	 * page页面创建
 	 */
 	public AppPage() {
-		this.add(new Login(getBodyName()).add(new AttributeModifier("style", "height:100%;")));
+		this.add(new Login(this.getPage(), getBodyName()).add(new AttributeModifier("style", "height:100%;")));
 	}
 	
 	public void initBody(Panel bodyPanel) {
 		if(bodyPanel != null){
 			//创建主体面板Panel
 			this.toPanel(bodyPanel);
-		}else{/*
+		}else{/* 
 			// 面板为空则用Label代替，显示空页面，否则会报错
 			this.toPanel(new DefaultPanel(getBodyName()));
 		*/}

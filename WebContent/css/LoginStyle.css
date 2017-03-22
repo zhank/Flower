@@ -1,7 +1,7 @@
 li{list-style: none;}
-a{cursor:pointer;}
+a{cursor:pointer;text-decoration: none;}
 a:HOVER{text-decoration: underline;}
-.loginForm li{height:60px;line-height:60px; margin-left: -20px;color:#fff;}
+.loginForm li, .rigistLi{height:60px;line-height:60px; margin-left: -20px;color:#fff;}
 .loginPanel{
 	position:absolute; 
 	background:url(../img/loginbg.jpg) no-repeat;
@@ -42,6 +42,8 @@ a:HOVER{text-decoration: underline;}
     margin-left: -15px;
 }
 .loginLink a{text-align: none;}
-.rigistLi a{font-size:14px;margin: 13%;}
+.rigistLi{position: relative;top: -15px;margin-left: 26px;}
+.rigistLi a{font-size:14px;margin: 13%; color:#fff;}
+.modalCss{font-size:18px;}
 		
 .footer{position:fixed;width:337px;bottom:5px;left:38%;color:#fff;font-size:13px;}
