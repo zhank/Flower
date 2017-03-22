@@ -13,6 +13,11 @@
     <servlet-name>MainApp</servlet-name>
     <url-pattern>/*</url-pattern>
   </servlet-mapping>
+  <context-param>
+ 		<!-- 发布模式 -->
+        <param-name>configuration</param-name>
+        <param-value>deployment</param-value> 
+</context-param>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
