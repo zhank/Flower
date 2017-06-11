@@ -11,20 +11,20 @@ import org.apache.wicket.markup.html.panel.Panel;
  * @version 0.9
  * @since 0.9
  */
-public class Join extends Panel {
+public class VJoin extends Panel {
 	private static final long serialVersionUID = 1L;
 	
 	private Component[] comps;
 	
-	public Join(String id, final Component comp1, final Component comp2) {
+	public VJoin(String id, final Component comp1, final Component comp2) {
 		this(id, new Component[] {comp1, comp2});
 	}
 		
-	public Join(String id, final Component comp1, final Component comp2, final Component comp3) {
+	public VJoin(String id, final Component comp1, final Component comp2, final Component comp3) {
 		this(id, new Component[] {comp1, comp2, comp3});
 	}
 	
-    public Join(String id, final Component[] comps) {
+    public VJoin(String id, final Component[] comps) {
         super(id);
         this.comps = comps;
         add(new JoinLoop("joins", comps));
